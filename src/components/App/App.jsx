@@ -1,32 +1,35 @@
-import { Container, Titile, SubTitile } from './App.styled';
-import { ContactForm } from '../ContactForm';
-import { Filter } from '../Filter';
-import { ContactList } from '../ContactList';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectError, selectIsLoading } from 'redux/selectors';
-import { useEffect } from 'react';
-import { fetchContacts } from 'redux/operations';
-import { Loader } from '../Loader';
-import { Notify } from 'notiflix';
+import { useDispatch,  } from 'react-redux';
+import { lazy, useEffect } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import { fetchContacts } from 'redux/contacts/operations';
+import ErrorPage from 'components/ErrorPage/ErrorPage';
+import Layout from 'components/Layout/Layout';
+
+
+const HomePage = lazy(() => import('../../pages/Home'));
+const RegisterPage = lazy(() => import('../../pages/Register'));
+const LoginPage = lazy(() => import('../../pages/Login'));
+const ContactsPage = lazy(() => import('../../pages/Contacts'));
 
 export const App = () => {
   const dispatch = useDispatch();
-  const isLoading = useSelector(selectIsLoading);
-  const error = useSelector(selectError);
 
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
 
   return (
-    <Container>
-      {error && Notify.failure('Ooops!..Something went wrong. Try to reload page')}
-      <Titile>Phonebook</Titile>
-      <ContactForm />
-      <SubTitile>Contacts</SubTitile>
-      <Filter />
-      {isLoading && !error && <Loader />}
-      <ContactList/>
-    </Container>
+    <>
+      <Routes>
+      <Route path='/' element={<Layout />}>
+        <Route index element={<HomePage />} />
+        <Route path='/register' element={<RegisterPage />} />
+        <Route path='/login' element={<LoginPage />} />
+        <Route path='/contacts' element={<ContactsPage />} />
+        <Route path='*' element={<ErrorPage />} />
+      </Route>
+    </Routes>
+    </>
+    
   );
 };

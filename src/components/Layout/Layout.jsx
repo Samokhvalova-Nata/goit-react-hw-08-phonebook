@@ -2,7 +2,7 @@ import { AuthNav } from "components/AuthNav";
 import { Navigation } from "components/Navigation";
 import { UserMenu } from "components/UserMenu";
 import { useAuth } from "hooks";
-import { Container, Header } from "./Layout.styled";
+import { Header } from "./Layout.styled";
 
 const Layout = () => {
     const { isLoggedIn } = useAuth();

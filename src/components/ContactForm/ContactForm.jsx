@@ -4,7 +4,7 @@ import * as yup from 'yup';
 import { useDispatch, useSelector } from "react-redux";
 import { selectContacts } from 'redux/contacts/selectors';
 import { addContact } from 'redux/contacts/operations';
-import { Notify } from 'notiflix';
+import { toast } from 'react-hot-toast';
 
 const schema = yup.object().shape({
     name: yup.string().required(),
@@ -20,16 +20,20 @@ export const ContactForm = () => {
     const dispatch = useDispatch();
     const contacts = useSelector(selectContacts);
 
-    const handleSubmit = (values, { resetForm }) => {
+    const handleSubmit = async (values, { resetForm }) => {
         const newName = contacts.some(contact =>
                 contact.name.toLowerCase() === values.name.toLowerCase());
                 if (newName) {
-                    Notify.failure(`${values.name} is already in contacts`);
+                    toast.error(`${values.name} is already in contacts`);
                     return;
-                }
-        dispatch(addContact({ name: values.name, number: values.number }));
-        resetForm();
-        Notify.success(`${values.name} is added to contacts`);
+        }
+        try {
+            await dispatch(addContact({ name: values.name, number: values.number })).unwrap();
+            resetForm();
+            toast.success(`${values.name} is added to contacts`);
+        } catch (error) {
+            console.log(error)
+        }
     };
 
         return (

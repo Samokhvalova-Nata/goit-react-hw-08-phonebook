@@ -12,7 +12,6 @@ export const Filter = () => {
     };
 
     return (
-        <>
             <Label htmlFor='search'>
                 Find contacts by name
                 <Input
@@ -21,6 +20,5 @@ export const Filter = () => {
                     value={filter}
                     onChange={handleChangeFilter}/>
             </Label>
-        </>
     );
 };

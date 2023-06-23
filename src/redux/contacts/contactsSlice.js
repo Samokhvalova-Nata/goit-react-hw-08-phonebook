@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchContacts, addContact, deleteContact } from "./operations";
+import { fetchContacts, addContact, deleteContact, updateContact } from "./operations";
 
 const handlePending = state => {
     state.isLoading = true;
@@ -17,7 +17,7 @@ const contactsSlice = createSlice({
         isLoading: false,
         error: null
     },
-    extraReducers: (builder) => {
+    extraReducers: builder => {
         builder
         .addCase(fetchContacts.fulfilled, (state, { payload }) => {
             state.isLoading = false;
@@ -36,8 +36,29 @@ const contactsSlice = createSlice({
                 contact => contact.id === payload.id);
             state.items.splice(index, 1);
         })
+        .addCase(updateContact.fulfilled, (state, { payload }) => {
+            state.isLoading = false;
+            state.error = null;
+            const index = state.items.findIndex(
+                contact => contact.id === payload.id);
+            state.items.splice(index, 1, payload);
+        })
         .addMatcher((action) => action.type.endsWith('/pending'), handlePending)
-        .addMatcher((action) => action.type.endsWith('/rejected'), handleRejected)
+            .addMatcher((action) => action.type.endsWith('/rejected'), handleRejected)
+        // .addMatcher(isAnyOf([
+        //     fetchContacts.pending,
+        //     addContact.pending,
+        //     deleteContact.pending,
+        //     updateContact.pending
+        // ]), handlePending)
+        // .addMatcher(isAnyOf([
+        //     fetchContacts.rejected,
+        //     addContact.rejected,
+        //     deleteContact.rejected,
+        //     updateContact.rejected
+        // ]), handleRejected)
+        
+        
     },
 });
 

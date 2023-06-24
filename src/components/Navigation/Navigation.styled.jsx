@@ -3,14 +3,13 @@ import { NavLink } from "react-router-dom";
 
 export const Link = styled(NavLink)`
   padding: 8px 10px;
-  border-radius: 4px;
   text-decoration: none;
-  color: black;
+  color: #000000;
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 500;
 
   &.active {
-    color: var(--accent-color);
+    color: #F5F4FA;
   }
   transition: transform var(--transition);
     &:hover,

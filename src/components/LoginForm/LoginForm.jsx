@@ -3,20 +3,20 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-// import FormControlLabel from '@mui/material/FormControlLabel';
-// import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import LockPersonOutlinedIcon from '@mui/icons-material/LockPersonOutlined';
 import Typography from '@mui/material/Typography';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+// import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useDispatch } from 'react-redux';
 import { login } from 'redux/auth/operations';
-import { Notify } from 'notiflix';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
+
+
+// const color = red[500];
 
 // function Copyright(props) {
 //   return (
@@ -32,7 +32,7 @@ import { toast } from 'react-hot-toast';
 // };
 
 
-const defaultTheme = createTheme();
+// const defaultTheme = createTheme();
 
 export function LoginForm() {
     const dispatch = useDispatch();
@@ -46,15 +46,15 @@ export function LoginForm() {
             email: form.elements.email.value,
             password: form.elements.password.value,
         })).unwrap();
+            toast.success(`Welcome, ${form.elements.email.value}`);
             form.reset();
-            toast.success('Welcome')
         } catch (error) {
-            toast.error("Login error")
+            toast.error('Ooops!..Login error. Please enter correct data')
         }
     };
 
     return (
-        <ThemeProvider theme={defaultTheme}>
+        // <ThemeProvider theme={defaultTheme}>
         <Grid container component="main" sx={{ height: '100vh' }}>
             <CssBaseline />
             <Grid
@@ -81,11 +81,11 @@ export function LoginForm() {
                 alignItems: 'center',
                 }}
             >
-                <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-                <LockOutlinedIcon />
+                <Avatar sx={{ m: 1, bgcolor: '#2196F3' }} >
+                    <LockPersonOutlinedIcon />
                 </Avatar>
                 <Typography component="h1" variant="h5">
-                Sign in
+                    Sign in
                 </Typography>
                 <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
                     <TextField
@@ -108,10 +108,6 @@ export function LoginForm() {
                         id="password"
                         autoComplete="current-password"
                     />
-                    {/* <FormControlLabel
-                        control={<Checkbox value="remember" color="primary" />}
-                        label="Remember me"
-                    /> */}
                     <Button
                         type="submit"
                         fullWidth
@@ -119,24 +115,19 @@ export function LoginForm() {
                         sx={{ mt: 3, mb: 2 }}
                     >Sign In</Button>
                 <Grid container>
-                    {/* <Grid item xs>
-                    <Link href="#" variant="body2">
-                        Forgot password?
-                    </Link>
-                    </Grid> */}
                     <Grid item>
-                    <Link component="button"
-                        variant="body2"
-                        onClick={() => navigate('/register')}>
-                        {"Don't have an account? Sign Up"}
-                    </Link>
-                </Grid>
+                        <Link component="button"
+                            variant="body2"
+                            onClick={() => navigate('/register')}>
+                            {"Don't have an account? Sign Up"}
+                        </Link>
+                    </Grid>
                 </Grid>
               {/* <Copyright sx={{ mt: 5 }} /> */}
                 </Box>
             </Box>
         </Grid>
         </Grid>
-    </ThemeProvider>
+    // </ThemeProvider>
 );
 };

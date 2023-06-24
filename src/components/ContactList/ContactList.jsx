@@ -1,14 +1,22 @@
 import { useSelector } from 'react-redux';
 import { ContactItem } from '../ContactItem/ContactItem';
-import { List } from './ContactList.styled'
+// import { List } from './ContactList.styled'
 import { selectVisibleContacts } from 'redux/contacts/selectors';
+
+import { Box, Container } from '@mui/material';
+
+
 
 export const ContactList = () => {
     const visibleContacts = useSelector(selectVisibleContacts);
 
     return (
-        <List>
-            {visibleContacts.map(({ id, name, number }) => (
+        <Container sx={{ mt: 4 }} maxWidth="md">
+            <Box sx={{ p: 4,
+                bgcolor: '#ffffff',
+                borderRadius: '10px',
+                boxShadow: 3,}} component='ul'>
+                {visibleContacts.map(({ id, name, number }) => (
                 <ContactItem
                     key={id}
                     id={id}
@@ -16,6 +24,8 @@ export const ContactList = () => {
                     number={number}
                 />
             ))}
-        </List>
+            </Box>
+            
+        </Container>
     );
 };

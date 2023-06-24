@@ -1,26 +1,19 @@
-import { AuthNav } from "components/AuthNav";
-import { Navigation } from "components/Navigation";
-import { UserMenu } from "components/UserMenu";
-import { useAuth } from "hooks";
-import { Header } from "./Layout.styled";
 import { Suspense } from "react";
 import { Outlet } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
+import { Bar } from "components/AppBar/AppBar";
+import { Container } from "@mui/material";
 
 const Layout = () => {
-    const { isLoggedIn } = useAuth();
 
     return (
-        <>
-            <Header>
-                <Navigation />
-                {isLoggedIn ? <UserMenu /> : <AuthNav />}
-            </Header>
+        <Container maxWidth="md"> 
+            <Bar/>
             <Suspense fallback={null}>
                 <Outlet/>
             </Suspense>
             <Toaster position="top-right" reverseOrder={false} />
-        </>
+        </Container>
     );
 };
 

@@ -9,30 +9,11 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import LockPersonOutlinedIcon from '@mui/icons-material/LockPersonOutlined';
 import Typography from '@mui/material/Typography';
-// import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useDispatch } from 'react-redux';
 import { login } from 'redux/auth/operations';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 
-
-// const color = red[500];
-
-// function Copyright(props) {
-//   return (
-//     <Typography variant="body2" color="text.secondary" align="center" {...props}>
-//       {'Copyright © '}
-//       <Link color="inherit" href="https://mui.com/">
-//         Your Website
-//       </Link>{' '}
-//       {new Date().getFullYear()}
-//       {'.'}
-//     </Typography>
-//   );
-// };
-
-
-// const defaultTheme = createTheme();
 
 export function LoginForm() {
     const dispatch = useDispatch();
@@ -54,7 +35,6 @@ export function LoginForm() {
     };
 
     return (
-        // <ThemeProvider theme={defaultTheme}>
         <Grid container component="main" sx={{ height: '100vh' }}>
             <CssBaseline />
             <Grid
@@ -123,11 +103,9 @@ export function LoginForm() {
                         </Link>
                     </Grid>
                 </Grid>
-              {/* <Copyright sx={{ mt: 5 }} /> */}
                 </Box>
             </Box>
         </Grid>
         </Grid>
-    // </ThemeProvider>
 );
 };

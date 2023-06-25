@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { selectError, selectIsLoading, selectVisibleContacts } from 'redux/contacts/selectors';
-import { Loader } from 'components/Loader';
+import { MainLoader } from 'components/Loader';
 import { ContactForm } from 'components/ContactForm';
 import { Filter } from 'components/Filter';
 import { ContactList } from 'components/ContactList';
@@ -9,10 +9,10 @@ import { fetchContacts } from 'redux/contacts/operations';
 import { Box, Container, Typography } from '@mui/material';
 
 const Contacts = () => {
-  const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
   const visibleContacts = useSelector(selectVisibleContacts);
   const dispatch = useDispatch();
+  const operation = useSelector(selectIsLoading);
 
   useEffect(() => {
     dispatch(fetchContacts());
@@ -20,6 +20,7 @@ const Contacts = () => {
 
   return (
     <Container component="main" maxWidth="md">
+      {operation === 'fetch' && !error && <MainLoader />}
       <Box sx={{
         marginTop: 3,
         display: 'flex',
@@ -54,7 +55,6 @@ const Contacts = () => {
                 paragraph
                 align="center">You have no contacts yet</Typography>)
           : (<ContactList />)}
-        {isLoading && !error && <Loader />}
       </Box>
     </Container>
   );

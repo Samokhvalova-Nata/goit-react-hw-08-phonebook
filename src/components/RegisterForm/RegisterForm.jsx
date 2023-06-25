@@ -3,12 +3,9 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-// import FormControlLabel from '@mui/material/FormControlLabel';
-// import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-// import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import LockPersonOutlinedIcon from '@mui/icons-material/LockPersonOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
@@ -16,19 +13,6 @@ import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/operations';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
-
-// function Copyright(props) {
-//   return (
-//     <Typography variant="body2" color="text.secondary" align="center" {...props}>
-//       {'Copyright © '}
-//       <Link color="inherit" href="https://mui.com/">
-//         Your Website
-//       </Link>{' '}
-//       {new Date().getFullYear()}
-//       {'.'}
-//     </Typography>
-//   );
-// }
 
 export function RegisterForm() {
     const dispatch = useDispatch();
@@ -50,7 +34,6 @@ export function RegisterForm() {
         }
     };
 
-
     return (
         <Container component="main" maxWidth="xs">
             <CssBaseline />
@@ -67,7 +50,7 @@ export function RegisterForm() {
                 <Typography component="h1" variant="h5">
                     Sign up
                 </Typography>
-                <Box component="form" autoComplete="off" noValidate     onSubmit={handleSubmit} sx={{ mt: 3 }}>
+                <Box component="form" autoComplete="off" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
                 <Grid container spacing={2}>
                     <Grid item xs={12} >
                         <TextField
@@ -121,8 +104,6 @@ export function RegisterForm() {
                 </Grid>
                 </Box>
             </Box>
-        {/* <Copyright sx={{ mt: 5 }} /> */}
         </Container>
-
 );
 };

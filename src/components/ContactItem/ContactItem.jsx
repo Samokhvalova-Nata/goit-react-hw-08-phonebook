@@ -1,32 +1,30 @@
 import PropTypes from 'prop-types';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { deleteContact } from 'redux/contacts/operations';
 import { toast } from 'react-hot-toast';
-import { IconButton } from '@mui/material';
+import Button from '@mui/material/Button';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { useState } from 'react';
-import {EditModal} from 'components/Modal/Modal';
+import { EditModal } from 'components/Modal/Modal';
+import { selectIsLoading } from 'redux/contacts/selectors';
+import { RemoveLoader } from 'components/Loader';
 
 const theme = createTheme({
     palette: {
     primary: {
         main: '#1976d2',
     },
-    // secondary: {
-    //       main: '#11cb5f',
-    // },
     },
 })
 
 export const ContactItem = ({ id, name, number }) => {
     const dispatch = useDispatch();
     const [isShowModal, setIsShowModal] = useState(false);
-
-    // console.log('isShowModal', isShowModal)
+    const operation = useSelector(selectIsLoading);
 
     const handleDelete = async () => {
         try {
@@ -41,8 +39,8 @@ export const ContactItem = ({ id, name, number }) => {
 
     return (
         <ThemeProvider theme={theme}>
-            <Grid container spacing={4} columns={16}>
-                <Grid item xs={6} >
+            <Grid container spacing={2} columns={16}>
+                <Grid item sm={6} >
                     <Typography
                         paragraph
                         fontSize='20px'
@@ -51,7 +49,7 @@ export const ContactItem = ({ id, name, number }) => {
                         {name}
                     </Typography>
                 </Grid>
-                <Grid item xs={6} >
+                <Grid item xs={4} >
                     <Typography
                         fontSize='20px'
                         color='#212121'
@@ -60,22 +58,28 @@ export const ContactItem = ({ id, name, number }) => {
                     </Typography>
                 </Grid>
                 <Grid item xs>
-                    <IconButton type="button"
-                        aria-label="delete"
-                    size="small"
-                    color="primary"
-                        onClick={handleDelete}>
-                        <DeleteIcon />
-                    </IconButton>
-                </Grid>
-                <Grid item xs>
-                    <IconButton type="button"
+                    <Button
+                        type="button"
+                        variant="outlined"
                         aria-label="delete"
                         size="small"
                         color="primary"
+                        startIcon={operation === id ? <RemoveLoader /> : <DeleteIcon/>}
+                        onClick={handleDelete}>
+                        {operation === id ? 'Deleting...' : 'Delete'}
+                    </Button>
+                </Grid>
+                <Grid item xs>
+                    <Button
+                        type="button"
+                        variant="contained"
+                        aria-label="edit"
+                        size="small"
+                        color="primary"
+                        startIcon={<EditIcon />}
                         onClick={toggleModal}>
-                        <EditIcon />
-                    </IconButton>
+                        Edit
+                    </Button>
                 </Grid>
             </Grid>
             {isShowModal &&

@@ -1,14 +1,13 @@
-import { useDispatch,  } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { lazy, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import ErrorPage from 'components/ErrorPage/ErrorPage';
 import Layout from 'components/Layout/Layout';
 import { useAuth } from 'hooks';
 import { refresh } from 'redux/auth/operations';
-import { Loader } from './Loader';
+import { MainLoader } from './Loader';
 import PublicRoute from './PublicRoute';
 import PrivateRoute from './PrivateRoute';
-
 
 const HomePage = lazy(() => import('../pages/Home'));
 const RegisterPage = lazy(() => import('../pages/Register'));
@@ -24,16 +23,15 @@ export const App = () => {
   }, [dispatch]);
 
   return (
-    isRefreshing ? (<Loader/>) :
+      isRefreshing  ? (<MainLoader />) :
       (<Routes>
-      <Route path='/' element={<Layout />}>
-        <Route index element={<HomePage />} />
-        <Route path='/register' element={<PublicRoute><RegisterPage /></PublicRoute>} />
-        <Route path='/login' element={<PublicRoute><LoginPage /></PublicRoute>} />
-        <Route path='/contacts' element={<PrivateRoute><ContactsPage /></PrivateRoute>} />
-        <Route path='*' element={<ErrorPage />} />
-      </Route>
-    </Routes>)
-  
+        <Route path='/' element={<Layout />}>
+          <Route index element={<HomePage />} />
+          <Route path='/register' element={<PublicRoute><RegisterPage /></PublicRoute>} />
+          <Route path='/login' element={<PublicRoute><LoginPage /></PublicRoute>} />
+          <Route path='/contacts' element={<PrivateRoute><ContactsPage /></PrivateRoute>} />
+          <Route path='*' element={<ErrorPage />} />
+        </Route>
+      </Routes>)
   );
 };

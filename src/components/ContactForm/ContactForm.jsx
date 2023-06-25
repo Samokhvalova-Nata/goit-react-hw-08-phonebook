@@ -1,12 +1,14 @@
 import { useDispatch, useSelector } from "react-redux";
-import { selectContacts } from 'redux/contacts/selectors';
+import { selectContacts, selectIsLoading } from 'redux/contacts/selectors';
 import { addContact } from 'redux/contacts/operations';
 import { toast } from 'react-hot-toast';
 import { Box, Button, Container, TextField } from '@mui/material';
+import { AddLoader } from "components/Loader";
 
 export const ContactForm = () => {
     const dispatch = useDispatch();
     const contacts = useSelector(selectContacts);
+    const operation = useSelector(selectIsLoading);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -40,7 +42,6 @@ export const ContactForm = () => {
                 borderRadius: '10px',
                 boxShadow: 3,
                 }}>
-
                 <Box component="form"
                     autoComplete="off"
                     noValidate
@@ -58,8 +59,9 @@ export const ContactForm = () => {
                         margin="normal"
                         required
                         fullWidth
+                        type="tel"
                         id="number"
-                        label="Number"
+                        label="Phone Number"
                         name="number"/>
 
                     <Button
@@ -68,7 +70,7 @@ export const ContactForm = () => {
                         variant="contained"
                         sx={{ mt: 2, mb: 2 }}
                         size="large">
-                    Add contact
+                    {operation === 'add' ? <AddLoader/> : <>Add contact</>}
                     </Button>
                 </Box>
             </Container>

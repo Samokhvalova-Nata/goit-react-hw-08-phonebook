@@ -1,11 +1,7 @@
 import { useSelector } from 'react-redux';
 import { ContactItem } from '../ContactItem/ContactItem';
-// import { List } from './ContactList.styled'
 import { selectVisibleContacts } from 'redux/contacts/selectors';
-
 import { Box, Container } from '@mui/material';
-
-
 
 export const ContactList = () => {
     const visibleContacts = useSelector(selectVisibleContacts);
@@ -25,7 +21,6 @@ export const ContactList = () => {
                 />
             ))}
             </Box>
-            
         </Container>
     );
 };

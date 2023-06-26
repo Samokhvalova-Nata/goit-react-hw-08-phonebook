@@ -7,19 +7,11 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { useState } from 'react';
 import { EditModal } from 'components/Modal/Modal';
 import { selectIsLoading } from 'redux/contacts/selectors';
 import { RemoveLoader } from 'components/Loader';
 
-const theme = createTheme({
-    palette: {
-    primary: {
-        main: '#1976d2',
-    },
-    },
-})
 
 export const ContactItem = ({ id, name, number }) => {
     const dispatch = useDispatch();
@@ -38,12 +30,12 @@ export const ContactItem = ({ id, name, number }) => {
     const toggleModal = () => setIsShowModal(prev => !prev);
 
     return (
-        <ThemeProvider theme={theme}>
+        <>
             <Grid container spacing={2} columns={16}>
                 <Grid item sm={6} >
                     <Typography
                         paragraph
-                        fontSize='20px'
+                        fontSize='18px'
                         fontWeight='500'
                         color='#757575'>
                         {name}
@@ -51,7 +43,7 @@ export const ContactItem = ({ id, name, number }) => {
                 </Grid>
                 <Grid item xs={4} >
                     <Typography
-                        fontSize='20px'
+                        fontSize='18px'
                         color='#212121'
                         paragraph>
                         {number}
@@ -90,7 +82,7 @@ export const ContactItem = ({ id, name, number }) => {
                 number={number}
                 isOpen={isShowModal} />
             }
-        </ThemeProvider> 
+        </>
     );
 };
 

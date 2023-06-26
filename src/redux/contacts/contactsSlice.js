@@ -23,6 +23,7 @@ const contactsSlice = createSlice({
             state.error = null;
             state.items = payload;
         })
+        .addCase(fetchContacts.rejected, handleRejected)
 
         .addCase(addContact.pending, (state) => {
             state.isLoading ='add';
@@ -32,6 +33,7 @@ const contactsSlice = createSlice({
             state.error = null;
             state.items.push(payload);
         })
+        .addCase(addContact.rejected, handleRejected)    
 
         .addCase(deleteContact.pending, (a, b) => {
                 a.isLoading = b.meta.arg;
@@ -43,6 +45,7 @@ const contactsSlice = createSlice({
                 contact => contact.id === payload.id);
             state.items.splice(index, 1);
         })
+        .addCase(deleteContact.rejected, handleRejected)  
 
         .addCase(updateContact.pending, (state) => {
             state.isLoading ='update';
@@ -54,7 +57,7 @@ const contactsSlice = createSlice({
                 contact => contact.id === payload.id);
             state.items.splice(index, 1, payload);
         })
-        .addMatcher((action) => action.type.endsWith('/rejected'), handleRejected)
+        .addCase(updateContact.rejected, handleRejected)  
     },
 });
 

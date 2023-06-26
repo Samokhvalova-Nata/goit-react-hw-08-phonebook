@@ -19,14 +19,15 @@ export const Filter = () => {
                 fontWeight='700'
                 paragraph
                 align="center">
-                Find contacts by name
+                Find contacts by name:
             </Typography>
             <TextField
-                sx={{ mb: 1 }}
+                sx={{ my: 0.5 }}
                 margin="normal"
                 fullWidth
                 name="filter"
                 value={filter}
+                size="small"
                 onChange={handleChangeFilter}/>
         </Container>
     );

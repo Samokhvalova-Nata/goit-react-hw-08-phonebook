@@ -6,7 +6,7 @@ export const MainLoader = () => {
     return (
         <Wrap>
             <RotatingLines
-                strokeColor="#2196F3"
+                strokeColor="#1976d2"
                 strokeWidth="5"
                 animationDuration="0.75"
                 width="96"
@@ -39,6 +39,22 @@ export const RemoveLoader = () => {
                 height="20" 
                 width="20" 
                 radius="3"
+                color="#1976d2" 
+                ariaLabel="three-dots-loading"
+                wrapperStyle={{}}
+                wrapperClassName=""
+                visible={true}/>
+        </>
+    )
+};
+
+export const LogoutLoader = () => {
+    return (
+        <>
+            <ThreeDots 
+                height="15" 
+                width="15" 
+                radius="2"
                 color="#1976d2" 
                 ariaLabel="three-dots-loading"
                 wrapperStyle={{}}

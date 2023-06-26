@@ -10,7 +10,7 @@ export const Bar = () => {
 
     return (
         <AppBar position="static">
-            <Toolbar>
+            <Toolbar component='nav'>
                 <Navigation />
                 {isLoggedIn ? <UserMenu /> : <AuthNav />}
             </Toolbar>

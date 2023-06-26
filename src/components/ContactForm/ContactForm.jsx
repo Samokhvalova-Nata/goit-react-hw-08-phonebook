@@ -37,7 +37,7 @@ export const ContactForm = () => {
 };
 
     return (
-            <Container maxWidth="sm" sx={{ p: 4, mb: 3,
+            <Container maxWidth="sm" sx={{ p: 4, mb: 4,
                 bgcolor: '#ffffff',
                 borderRadius: '10px',
                 boxShadow: 3,
@@ -53,7 +53,8 @@ export const ContactForm = () => {
                         fullWidth
                         id="name"
                         label="Name"
-                        name="name" />
+                        name="name"
+                    />
 
                     <TextField
                         margin="normal"
@@ -62,7 +63,8 @@ export const ContactForm = () => {
                         type="tel"
                         id="number"
                         label="Phone Number"
-                        name="number"/>
+                        name="number"
+                        />
 
                     <Button
                         type="submit"

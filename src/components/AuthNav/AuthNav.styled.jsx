@@ -7,6 +7,7 @@ export const Link = styled(NavLink)`
   color: #000000;
   font-size: 18px;
   font-weight: 500;
+  font-family: ubuntu;
 
   &.active {
     color: #F5F4FA;
@@ -14,6 +15,6 @@ export const Link = styled(NavLink)`
   transition: transform var(--transition);
     &:hover,
     &:focus {
-        transform: scale(1.05);
+        transform: scale(1.07);
     }
 `;

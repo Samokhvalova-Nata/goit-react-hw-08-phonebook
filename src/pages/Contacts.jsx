@@ -7,6 +7,8 @@ import { ContactList } from 'components/ContactList';
 import { useEffect } from 'react';
 import { fetchContacts } from 'redux/contacts/operations';
 import { Box, Container, Typography } from '@mui/material';
+import { Helmet } from 'react-helmet';
+
 
 const Contacts = () => {
   const error = useSelector(selectError);
@@ -19,26 +21,31 @@ const Contacts = () => {
   }, [dispatch]);
 
   return (
-    <Container component="main" maxWidth="md">
-      {operation === 'fetch' && !error && <MainLoader />}
+      <Container component='main' maxWidth="md" sx={{ minHeight: '100vh' }}>
+
+      <Helmet>
+        <title>Contacts</title>
+      </Helmet>
       <Box sx={{
-        marginTop: 3,
+        marginTop: 4,
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
         }}>
+
           <Typography
             sx={{ mb: 4 }}
             variant="h1"
-            fontSize='40px'
+            fontSize='44px'
             fontWeight='700'
             align="center"
             gutterBottom>
             Phonebook
           </Typography>
           <ContactForm />
+
           <Typography
-            sx={{ mb: 4 }}
+            sx={{ mb: 3 }}
             variant="h2"
             fontSize='34px'
             fontWeight='700'
@@ -46,9 +53,11 @@ const Contacts = () => {
             gutterBottom>
             Contacts
           </Typography>
-          <Filter />
+        <Filter />
+
+        {operation === 'fetch' && !error && <MainLoader />}
         {visibleContacts.length === 0
-          ? (<Typography sx={{ mb: 2 }}
+          ? (<Typography sx={{ my: 2 }}
                 fontSize='18px'
                 color='#212121'
                 fontWeight='700'

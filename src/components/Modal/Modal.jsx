@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateContact } from "redux/contacts/operations";
 import { toast } from 'react-hot-toast';
 import { Grid, TextField } from '@mui/material';
-import { selectIsLoading } from 'redux/contacts/selectors';
+import { selectContacts, selectIsLoading } from 'redux/contacts/selectors';
 
 const style = {
     position: 'absolute',
@@ -26,13 +26,24 @@ export const EditModal = ({ isOpen, id, name, number, onClose }) => {
     const [contactNumber, setContactNumber] = React.useState(number);
     const dispatch = useDispatch();
     const operation = useSelector(selectIsLoading);
+    const contacts = useSelector(selectContacts);
 
     const handleEdit = async (e) => {
         e.preventDefault();
+
+        const EditName = contacts.some(contact =>
+            contact.name.toLowerCase() === contactName.toLowerCase());
+
+        if (EditName) {
+            toast.error(`${contactName} is already in contacts`);
+            return;
+        }
+
         if (contactName === '' || contactNumber === '') {
             toast.error('Fields cannot be empty. Enter some data!');
             return;
         }
+
         try {
             await dispatch(updateContact({ name: contactName, number: contactNumber, contactId:id })).unwrap();
             toast.success(`${name} contact was changed`);

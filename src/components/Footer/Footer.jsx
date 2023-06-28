@@ -7,7 +7,7 @@ function Copyright(props) {
             <Typography variant="body2" color="text.secondary">Developed by {' '}
                 <Link color="inherit"
                     target="_blank"
-                    rel="noopener"
+                    rel="noopener noreferrer"
                     href="https://github.com/Samokhvalova-Nata">
                     Samokhvalova Nataliia
                 </Link>{' '}
@@ -20,9 +20,9 @@ function Copyright(props) {
 
 export const Footer = () => {
     return (
-        <Box component='footer' maxWidth="md"  sx={{marginTop: 4}}>
+        <Box component='footer' >
             <Box sx={{
-                marginTop: 2,
+                // marginTop: 2,
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',

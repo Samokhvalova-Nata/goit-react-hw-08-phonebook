@@ -37,7 +37,7 @@ export const ContactForm = () => {
 };
 
     return (
-            <Container maxWidth="sm" sx={{ p: 4, mb: 4,
+            <Container maxWidth="xs" sx={{ p: 4, mb: 4,
                 bgcolor: '#ffffff',
                 borderRadius: '10px',
                 boxShadow: 3,
@@ -53,7 +53,8 @@ export const ContactForm = () => {
                         fullWidth
                         id="name"
                         label="Name"
-                        name="name"
+                    name="name"
+                    size="small"
                     />
 
                     <TextField
@@ -63,7 +64,8 @@ export const ContactForm = () => {
                         type="tel"
                         id="number"
                         label="Phone Number"
-                        name="number"
+                    name="number"
+                    size="small"
                         />
 
                     <Button
@@ -71,7 +73,7 @@ export const ContactForm = () => {
                         fullWidth
                         variant="contained"
                         sx={{ mt: 2, mb: 2 }}
-                        size="large">
+                        size="medium">
                     {operation === 'add' ? <AddLoader/> : <>Add contact</>}
                     </Button>
                 </Box>

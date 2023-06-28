@@ -36,74 +36,57 @@ const Home = () => {
             <Helmet>
                 <title>Home</title>
             </Helmet>
-            <Box component='main' maxWidth="md" sx={{ 
-                backgroundImage: 'url(https://source.unsplash.com/random?wallpapers)',
+            <Box conponent='main' sx={{
+                backgroundImage: 'linear-gradient(rgba(47, 48, 58, 0.4), rgba(47, 48, 58, 0.4)), url(https://source.unsplash.com/random?wallpapers)',
                 backgroundRepeat: 'no-repeat',
                 backgroundColor: 'rgba(0, 0, 50, 0.30 )',
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
+                marginTop: 1.5,
+                marginBottom: 1.5,
+                paddingTop: 10,
+                paddingBottom: 10,
+                textAlign: 'center',
                 minHeight: '100vh',
-                paddingLeft: 0,
-                paddingRigth: 0,
-            }}>
-
-            <Box  sx={{
-                    marginTop: 4,
-                    marginBottom: 4,
-                    paddingTop: 12,
-                    paddingBottom: 10,
-                    paddingLeft: 5,
-                    paddingRight: 5,
-                    display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                bgcolor: 'rgba(0, 0, 50, 0.30 )',
-                height: '100vh',
                 }}>
-                <Typography
-                    // sx={{ mb: 1 }}
-                    variant="h1"
-                    fontSize='58px'
-                    fontWeight='500'
-                    align="center"
-                    fontFamily='Ubuntu'
-                    color='secondary'
-                    >
-                    Save all your 
-                    </Typography>
                     <Typography
-                        // sx={{ mb: 2 }}
-                        fontSize='58px'
+                        sx={{ mb: 1 }}
+                        variant="h2"
+                        fontSize='52px'
                         fontWeight='500'
                         fontFamily='Ubuntu'
-                        align="center"
                         color='secondary'
+                        maxWidth='480px'
+                        marginLeft='auto'
+                        marginRight='auto'
                         >
-                        contacts in
+                        Save all your contacts in
                     </Typography>
                     <Typography
-                        fontSize='64px'
+                        sx={{ mb: 6 }}
+                        variant="h1"
+                        fontSize='56px'
                         fontWeight='700'
-                        align="center"
                         fontFamily='Ubuntu'
-                        color='secondary'>
+                        color='secondary'
+                        maxWidth='480px'
+                        marginLeft='auto'
+                        marginRight='auto'
+                        >
                         Phonebook
                     </Typography>
                     <Button
-                        sx={{ mt: 6 }}
-                    type="button"
-                    variant="contained"
-                    aria-label="Start"
-                    size="large"
-                    color="primary"
-                    endIcon={<KeyboardArrowRightIcon />}
-                    onClick={handleStart}>
-                    Get started
-                </Button>
+                        type="button"
+                        variant="contained"
+                        aria-label="Start"
+                        size="large"
+                        color="primary"
+                        endIcon={<KeyboardArrowRightIcon />}
+                        onClick={handleStart}>
+                        Get started
+                    </Button>
             </Box>
-        </Box>
         </ThemeProvider>
-        
     );
 };
 

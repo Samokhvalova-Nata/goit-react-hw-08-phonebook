@@ -31,25 +31,27 @@ export const ContactItem = ({ id, name, number }) => {
 
     return (
         <>
-            <Grid container spacing={2} columns={16}>
-                <Grid item sm={6} >
+            <Grid container spacing={1} columns={12}>
+                <Grid item sm={4} >
                     <Typography
                         paragraph
                         fontSize='18px'
                         fontWeight='500'
-                        color='#757575'>
+                        color='#212121'
+                        textAlign='left'>
                         {name}
                     </Typography>
                 </Grid>
                 <Grid item xs={4} >
                     <Typography
                         fontSize='18px'
-                        color='#212121'
-                        paragraph>
+                        color='#757575'
+                        paragraph
+                        textAlign='left'>
                         {number}
                     </Typography>
                 </Grid>
-                <Grid item xs>
+                <Grid item sm={2}>
                     <Button
                         type="button"
                         variant="outlined"
@@ -61,7 +63,7 @@ export const ContactItem = ({ id, name, number }) => {
                         {operation === id ? 'Deleting...' : 'Delete'}
                     </Button>
                 </Grid>
-                <Grid item xs>
+                <Grid item sm={2}>
                     <Button
                         type="button"
                         variant="contained"

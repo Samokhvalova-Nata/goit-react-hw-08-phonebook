@@ -40,7 +40,11 @@ export function LoginForm() {
     };
 
     return (
-        <Grid container component='main' sx={{ height: '100vh' }}>
+        <Grid container component='main'
+            sx={{
+            minHeight: '100vh',
+            marginTop: 1.5,
+            marginBottom: 1.5}}>
             <CssBaseline />
             <Grid item xs={false} sm={4} md={7} sx={{
                 backgroundImage: 'url(https://source.unsplash.com/random?wallpapers)',
@@ -62,7 +66,7 @@ export function LoginForm() {
                     <Avatar sx={{ m: 1, bgcolor: '#1976d2' }} >
                         <LockPersonOutlinedIcon />
                     </Avatar>
-                    <Typography component="h1" variant="h5">
+                    <Typography component="h1" variant="h5" fontFamily= 'Ubuntu'>
                         Sign in
                     </Typography>
                     <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>

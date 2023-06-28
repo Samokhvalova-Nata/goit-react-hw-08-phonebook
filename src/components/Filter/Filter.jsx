@@ -16,9 +16,8 @@ export const Filter = () => {
             <Typography sx={{ mb: 1 }}
                 fontSize='22px'
                 color='#212121'
-                fontWeight='700'
                 paragraph
-                align="center">
+            >
                 Find contacts by name:
             </Typography>
             <TextField

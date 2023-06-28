@@ -6,7 +6,7 @@ import { Filter } from 'components/Filter';
 import { ContactList } from 'components/ContactList';
 import { useEffect } from 'react';
 import { fetchContacts } from 'redux/contacts/operations';
-import { Box, Container, Typography } from '@mui/material';
+import { Container, Typography } from '@mui/material';
 import { Helmet } from 'react-helmet';
 
 
@@ -21,38 +21,37 @@ const Contacts = () => {
   }, [dispatch]);
 
   return (
-      <Container component='main' maxWidth="md" sx={{ minHeight: '100vh' }}>
-
+      <Container component='main'
+            maxWidth="md"
+            sx={{
+                marginTop: 3,
+                marginBottom: 3,
+                minHeight: '100vh',
+                textAlign: 'center',
+            }}>
       <Helmet>
         <title>Contacts</title>
       </Helmet>
-      <Box sx={{
-        marginTop: 4,
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        }}>
-
           <Typography
-            sx={{ mb: 4 }}
+            sx={{ mb: 3 }}
             variant="h1"
             fontSize='44px'
             fontWeight='700'
-            align="center"
             gutterBottom>
             Phonebook
-          </Typography>
+        </Typography>
+
           <ContactForm />
 
           <Typography
             sx={{ mb: 3 }}
             variant="h2"
             fontSize='34px'
-            fontWeight='700'
-            align="center"
+            fontWeight='500'
             gutterBottom>
             Contacts
-          </Typography>
+        </Typography>
+
         <Filter />
 
         {operation === 'fetch' && !error && <MainLoader />}
@@ -62,9 +61,9 @@ const Contacts = () => {
                 color='#212121'
                 fontWeight='700'
                 paragraph
-                align="center">You have no contacts yet</Typography>)
+                align="center">There are no contacts yet</Typography>)
           : (<ContactList />)}
-      </Box>
+
     </Container>
   );
 };

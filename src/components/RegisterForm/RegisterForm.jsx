@@ -40,11 +40,18 @@ export function RegisterForm() {
     };
 
     return (
-        <Container component='main' maxWidth="xs" sx={{ height: '100vh' }}>
+        <Container
+            component='main'
+            maxWidth="xs"
+            sx={{
+                marginTop: 1.5,
+                marginBottom: 1.5,
+                minHeight: '100vh',
+            }}
+            >
             <CssBaseline />
             <Box
                 sx={{
-                marginTop: 8,
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
@@ -52,7 +59,7 @@ export function RegisterForm() {
                 <Avatar sx={{ m: 1, bgcolor: '#1976d2' }}>
                     <LockPersonOutlinedIcon />
                 </Avatar>
-                <Typography component="h1" variant="h5">
+                <Typography component="h1" variant="h5" fontFamily= 'Ubuntu'>
                     Sign up
                 </Typography>
                 <Box component="form" autoComplete="off" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>

@@ -42,7 +42,7 @@ export function LoginForm() {
     return (
         <Grid container component='main'
             sx={{
-            minHeight: '100vh',
+            minHeight: '80vh',
             marginTop: 1.5,
             marginBottom: 1.5}}>
             <CssBaseline />

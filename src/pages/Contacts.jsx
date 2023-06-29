@@ -26,7 +26,7 @@ const Contacts = () => {
             sx={{
                 marginTop: 3,
                 marginBottom: 3,
-                minHeight: '100vh',
+                minHeight: '80vh',
                 textAlign: 'center',
             }}>
       <Helmet>

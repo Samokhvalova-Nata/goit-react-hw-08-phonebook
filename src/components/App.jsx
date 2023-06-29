@@ -34,6 +34,15 @@ const theme = createTheme({
         primary: {
             main: '#1976d2',
         },
+  },
+  breakpoints: {
+    values: {
+        xs: 300,
+        sm: 600,
+        md: 900,
+        lg: 1200,
+        xl: 1536,
+    },
     },
 });
 

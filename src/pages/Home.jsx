@@ -6,6 +6,7 @@ import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import { useAuth } from "hooks";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
+import imgBgd from '../../src/images/bgd.jpg';
 
 const theme = createTheme({
     palette: {
@@ -20,7 +21,16 @@ const theme = createTheme({
         button: {
             fontFamily: 'Ubuntu',
         },
-    }
+    },
+    breakpoints: {
+    values: {
+        xs: 300,
+        sm: 600,
+        md: 900,
+        lg: 1200,
+        xl: 1536,
+    },
+    },
 });
 
 const Home = () => {
@@ -37,7 +47,7 @@ const Home = () => {
                 <title>Home</title>
             </Helmet>
             <Box conponent='main' sx={{
-                backgroundImage: 'linear-gradient(rgba(47, 48, 58, 0.4), rgba(47, 48, 58, 0.4)), url(https://source.unsplash.com/random?wallpapers)',
+                backgroundImage: `linear-gradient(rgba(47, 68, 158, 0.3), rgba(47, 48, 58, 0.3)), url(${imgBgd})`,
                 backgroundRepeat: 'no-repeat',
                 backgroundColor: 'rgba(0, 0, 50, 0.30 )',
                 backgroundSize: 'cover',
@@ -47,12 +57,18 @@ const Home = () => {
                 paddingTop: 10,
                 paddingBottom: 10,
                 textAlign: 'center',
-                minHeight: '100vh',
+                height: '80vh',
                 }}>
                     <Typography
-                        sx={{ mb: 1 }}
+                    sx={{
+                        mb: 1,
+                        fontSize: {
+                            xs: '30px',
+                            sm: '40px',
+                            md: '52px'
+                        }
+                    }}
                         variant="h2"
-                        fontSize='52px'
                         fontWeight='500'
                         fontFamily='Ubuntu'
                         color='secondary'
@@ -60,15 +76,23 @@ const Home = () => {
                         marginLeft='auto'
                         marginRight='auto'
                         >
-                        Save all your contacts in
+                        Save all your <br/>contacts in
                     </Typography>
                     <Typography
-                        sx={{ mb: 6 }}
+                    sx={{
+                        mb: {
+                            xs: 2.5,
+                            sm: 3,
+                            md: 6
+                        }, fontSize: {
+                            xs: '34px',
+                            sm: '44px',
+                            md: '56px'
+                        }}}
                         variant="h1"
-                        fontSize='56px'
                         fontWeight='700'
                         fontFamily='Ubuntu'
-                        color='secondary'
+                        color='#ffffff'
                         maxWidth='480px'
                         marginLeft='auto'
                         marginRight='auto'

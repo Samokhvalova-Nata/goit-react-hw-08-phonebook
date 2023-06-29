@@ -12,7 +12,14 @@ const LogoutButton = styled(Button)`
     background-color: #ffffff;
     color: #1976d2;
     border: 1px solid #ffffff;
+    font-size: 10px;
+    padding: 5px 6px;
+
+    @media (min-width: 600px) {
     font-size: 12px;
+    padding: 6px 8px;
+    }
+
     :hover {
     color: #ffffff;
     }
@@ -28,7 +35,7 @@ export const UserMenu = () => {
     return (
         <>
             <User>
-                {user.email}
+                {user.name}
             </User>
             <LogoutButton
                 type="button"

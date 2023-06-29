@@ -46,7 +46,7 @@ export function RegisterForm() {
             sx={{
                 marginTop: 1.5,
                 marginBottom: 1.5,
-                minHeight: '100vh',
+                minHeight: '80vh',
             }}
             >
             <CssBaseline />

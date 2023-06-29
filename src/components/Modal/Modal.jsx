@@ -10,6 +10,7 @@ import { toast } from 'react-hot-toast';
 import { Grid, TextField } from '@mui/material';
 import { selectContacts, selectIsLoading } from 'redux/contacts/selectors';
 
+
 const style = {
     position: 'absolute',
     top: '50%',
@@ -33,8 +34,10 @@ export const EditModal = ({ isOpen, id, name, number, onClose }) => {
 
         const EditName = contacts.some(contact =>
             contact.name.toLowerCase() === contactName.toLowerCase());
+        const EditNumber = contacts.some(contact =>
+            contact.number === contactNumber);
 
-        if (EditName) {
+        if (EditName && EditNumber) {
             toast.error(`${contactName} is already in contacts`);
             return;
         }
@@ -87,7 +90,8 @@ export const EditModal = ({ isOpen, id, name, number, onClose }) => {
                         type="tel"
                         id="number"
                         label="Phone Number"
-                        name="number"
+                            name="number"
+                            
                         value={contactNumber}
                         onChange={({ target: { value } }) => setContactNumber(value)}/>
 

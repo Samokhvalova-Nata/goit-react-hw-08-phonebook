@@ -29,37 +29,55 @@ export const ContactItem = ({ id, name, number }) => {
 
     const toggleModal = () => setIsShowModal(prev => !prev);
 
-
-//     xs, extra-small: 0px
-// sm, small: 600px
-// md, medium: 900px
-// lg, large: 1200px
-// xl, extra-large: 1536px
-
     return (
         <>
-            <Grid container spacing={1} columns={12}>
-                <Grid item sm={4} >
-                    <Typography
+            <Grid container sx={{ mb: {xs:4,sm:4, md:1} }} spacing={1}
+                // rowSpacing={{ xs: 1, sm: 1, md: 2 }}
+                // columnSpacing={{ xs: 1, sm: 0, md: 0 }}
+                columns={{xs:12,sm:12, md:16}} >
+
+                    <Grid item xs={12} sm={6} md={6} >
+                        <Typography
                         paragraph
-                        fontSize='18px'
+                        sx={{
+                        fontSize: {
+                            xs: '16px',
+                            sm: '18px',
+                            },
+                            textAlign: {
+                                xs: 'center',
+                                md: 'left'
+                            }
+                        }} 
+                        // textAlign='center'
                         fontWeight='500'
                         color='#212121'
-                        textAlign='left'>
+                    >
                         {name}
-                    </Typography>
-                </Grid>
-                <Grid item xs={4} >
-                    <Typography
-                        fontSize='18px'
+                        </Typography>
+                    </Grid>
+                    <Grid item xs={12} sm={6} md={6} >
+                        <Typography 
+                        sx={{
+                        fontSize: {
+                            xs: '16px',
+                            sm: '18px',
+                            },
+                            textAlign: {
+                                xs: 'center',
+                                md: 'left'
+                            }
+                        }}
+                        // textAlign='center'
                         color='#757575'
                         paragraph
-                        textAlign='left'>
+                        >
                         {number}
-                    </Typography>
-                </Grid>
-                <Grid item sm={2}>
-                    <Button
+                        </Typography>
+                    </Grid>
+
+                    <Grid item xs={6}  md>
+                        <Button
                         type="button"
                         variant="outlined"
                         aria-label="delete"
@@ -68,10 +86,10 @@ export const ContactItem = ({ id, name, number }) => {
                         startIcon={operation === id ? <RemoveLoader /> : <DeleteIcon/>}
                         onClick={handleDelete}>
                         {operation === id ? 'Deleting...' : 'Delete'}
-                    </Button>
-                </Grid>
-                <Grid item sm={2}>
-                    <Button
+                        </Button>
+                    </Grid>
+                <Grid item xs={6}  md >
+                        <Button
                         type="button"
                         variant="contained"
                         aria-label="edit"
@@ -80,8 +98,9 @@ export const ContactItem = ({ id, name, number }) => {
                         startIcon={<EditIcon />}
                         onClick={toggleModal}>
                         Edit
-                    </Button>
-                </Grid>
+                        </Button>
+                    </Grid>
+
             </Grid>
             {isShowModal &&
                 <EditModal
@@ -100,3 +119,4 @@ ContactItem.propTypes = {
     name: PropTypes.string.isRequired,
     number: PropTypes.string.isRequired,
 };
+

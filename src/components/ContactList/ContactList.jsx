@@ -1,14 +1,13 @@
 import { useSelector } from 'react-redux';
 import { ContactItem } from '../ContactItem/ContactItem';
 import { selectVisibleContacts } from 'redux/contacts/selectors';
-import { Box, Container } from '@mui/material';
+import { Container } from '@mui/material';
 
 export const ContactList = () => {
     const visibleContacts = useSelector(selectVisibleContacts);
 
     return (
-        <Container sx={{ mt: 4 }} maxWidth="md">
-            <Box sx={{ p: 4,
+            <Container maxWidth="md" sx={{ p: 4, mt: 4,
                 bgcolor: '#ffffff',
                 borderRadius: '10px',
                 boxShadow: 3,}} component='ul'>
@@ -20,7 +19,6 @@ export const ContactList = () => {
                     number={number}
                 />
             ))}
-            </Box>
-        </Container>
+            </Container>
     );
 };

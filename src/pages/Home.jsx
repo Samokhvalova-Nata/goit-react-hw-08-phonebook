@@ -48,6 +48,7 @@ const Home = () => {
             </Helmet>
             <Box conponent='main' sx={{
                 backgroundImage: `linear-gradient(rgba(47, 68, 158, 0.3), rgba(47, 48, 58, 0.3)), url(${imgBgd})`,
+                // backgroundImage: 'linear-gradient(rgba(47, 68, 158, 0.3), rgba(47, 48, 58, 0.3)), url(https://source.unsplash.com/random?wallpapers)',
                 backgroundRepeat: 'no-repeat',
                 backgroundColor: 'rgba(0, 0, 50, 0.30 )',
                 backgroundSize: 'cover',
@@ -57,7 +58,7 @@ const Home = () => {
                 paddingTop: 10,
                 paddingBottom: 10,
                 textAlign: 'center',
-                height: '80vh',
+                minHeight: '80vh',
                 }}>
                     <Typography
                     sx={{
